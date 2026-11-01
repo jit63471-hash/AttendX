@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.attendx.controller.StudentController"
+      spacing="16" styleClass="page-bg">
+    <padding>
+        <Insets top="20" right="24" bottom="24" left="24" />
+    </padding>
+    <children>
+        <!-- TOOLBAR / FILTER ROW -->
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <children>
+                <TextField fx:id="searchField" promptText="🔍  Search by Name or Reg. Number..." styleClass="form-field" prefWidth="280" />
+
+                <ComboBox fx:id="departmentFilter" promptText="All Departments" styleClass="form-field" prefWidth="180" />
+
+                <ComboBox fx:id="statusFilter" promptText="Status" styleClass="form-field" prefWidth="120" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Button text="+ Add Student" onAction="#handleOpenAddDialog" styleClass="primary-btn" />
+                <Button text="📥 Import Excel" onAction="#handleImportExcel" styleClass="secondary-btn" />
+                <Button text="📊 Export Excel" onAction="#handleExportExcel" styleClass="secondary-btn" />
+                <Button text="📄 Export PDF" onAction="#handleExportPdf" styleClass="secondary-btn" />
+            </children>
+        </HBox>
+
+        <!-- STUDENT TABLE -->
+        <VBox styleClass="card-panel" VBox.vgrow="ALWAYS" spacing="10">
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label fx:id="studentCountLabel" text="Showing 0 students" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <ProgressIndicator fx:id="loadingIndicator" prefWidth="18" prefHeight="18" visible="false" />
+                    </children>
+                </HBox>
+
+                <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colRegNo" text="Reg. Number" prefWidth="120" />
+                        <TableColumn fx:id="colName" text="Full Name" prefWidth="160" />
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="180" />
+                        <TableColumn fx:id="colPhone" text="Phone" prefWidth="110" />
+                        <TableColumn fx:id="colDept" text="Department" prefWidth="120" />
+                        <TableColumn fx:id="colCourse" text="Course" prefWidth="120" />
+                        <TableColumn fx:id="colSemester" text="Semester" prefWidth="90" />
+                        <TableColumn fx:id="colSection" text="Sec" prefWidth="50" />
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="85" />
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="140" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</VBox>

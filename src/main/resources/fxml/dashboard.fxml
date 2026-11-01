@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.attendx.controller.DashboardController"
+            fitToWidth="true" styleClass="page-bg">
+    <content>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="24" right="24" bottom="24" left="24" />
+            </padding>
+            <children>
+                <!-- TOP STAT CARDS GRID -->
+                <GridPane hgap="16" vgap="16">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                        <ColumnConstraints percentWidth="20" />
+                    </columnConstraints>
+                    <children>
+                        <!-- Card 1: Students -->
+                        <VBox styleClass="stat-card" spacing="8" GridPane.columnIndex="0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="TOTAL STUDENTS" styleClass="stat-card-title" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="🎓" styleClass="stat-card-icon" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="totalStudentsLabel" text="0" styleClass="stat-card-value" />
+                                <Label text="Active enrolled students" style="-fx-font-size: 11px; -fx-text-fill: #10B981;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Card 2: Faculty -->
+                        <VBox styleClass="stat-card" spacing="8" GridPane.columnIndex="1">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="FACULTY MEMBERS" styleClass="stat-card-title" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="👨‍🏫" styleClass="stat-card-icon" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="totalFacultyLabel" text="0" styleClass="stat-card-value" />
+                                <Label text="Teaching staff" style="-fx-font-size: 11px; -fx-text-fill: #635BFF;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Card 3: Present Today -->
+                        <VBox styleClass="stat-card" spacing="8" GridPane.columnIndex="2">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="PRESENT TODAY" styleClass="stat-card-title" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="✅" styleClass="stat-card-icon" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="presentTodayLabel" text="0" styleClass="stat-card-value" style="-fx-text-fill: #10B981;" />
+                                <Label text="Logged in class sessions" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Card 4: Absent Today -->
+                        <VBox styleClass="stat-card" spacing="8" GridPane.columnIndex="3">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="ABSENT TODAY" styleClass="stat-card-title" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="❌" styleClass="stat-card-icon" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="absentTodayLabel" text="0" styleClass="stat-card-value" style="-fx-text-fill: #EF4444;" />
+                                <Label text="Unexcused absentees" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Card 5: Overall Attendance Rate -->
+                        <VBox styleClass="stat-card" spacing="8" GridPane.columnIndex="4">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="OVERALL RATE" styleClass="stat-card-title" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="📈" styleClass="stat-card-icon" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="overallRateLabel" text="0.0%" styleClass="stat-card-value" style="-fx-text-fill: #635BFF;" />
+                                <Label fx:id="shortageBadgeLabel" text="0 Shortage Alerts (&lt;75%)" style="-fx-font-size: 11px; -fx-text-fill: #EF4444; -fx-font-weight: bold;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </GridPane>
+
+                <!-- CHARTS ROW -->
+                <HBox spacing="16" prefHeight="320">
+                    <children>
+                        <!-- Weekly Bar Chart -->
+                        <VBox styleClass="card-panel" HBox.hgrow="ALWAYS" spacing="10">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <VBox spacing="2">
+                                            <children>
+                                                <Label text="Weekly Attendance Overview" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                                                <Label text="Attendance trends over the past 7 days" styleClass="page-subtitle" />
+                                            </children>
+                                        </VBox>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="secondary-btn" style="-fx-font-size: 11px; -fx-padding: 4 10;" />
+                                    </children>
+                                </HBox>
+                                <BarChart fx:id="weeklyBarChart" VBox.vgrow="ALWAYS" legendVisible="true">
+                                    <xAxis>
+                                        <CategoryAxis label="Day" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis label="Number of Students" />
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </VBox>
+
+                        <!-- Attendance Distribution Pie Chart -->
+                        <VBox styleClass="card-panel" prefWidth="380" spacing="10">
+                            <children>
+                                <Label text="Today's Attendance Ratio" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                                <Label text="Present vs Absent distribution" styleClass="page-subtitle" />
+                                <PieChart fx:id="distributionPieChart" VBox.vgrow="ALWAYS" legendVisible="true" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- BOTTOM ROW: RECENT ACTIVITIES & SHORTAGE ALERTS -->
+                <HBox spacing="16">
+                    <children>
+                        <!-- Shortage Alerts List -->
+                        <VBox styleClass="card-panel" HBox.hgrow="ALWAYS" spacing="10">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="⚠️ Attendance Shortage Alerts (&lt; 75%)" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #EF4444;" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label text="Action Required" style="-fx-font-size: 11px; -fx-text-fill: #EF4444; -fx-font-weight: bold;" />
+                                    </children>
+                                </HBox>
+                                <ListView fx:id="shortageListView" prefHeight="160" />
+                            </children>
+                        </VBox>
+
+                        <!-- Recent Activity Logs -->
+                        <VBox styleClass="card-panel" HBox.hgrow="ALWAYS" spacing="10">
+                            <children>
+                                <Label text="📋 Recent Audit Activities" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                                <ListView fx:id="activityListView" prefHeight="160" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

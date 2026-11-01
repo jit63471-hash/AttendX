@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.attendx.controller.StudentFormController"
+      spacing="16" prefWidth="540" styleClass="page-bg">
+    <padding>
+        <Insets top="24" right="24" bottom="24" left="24" />
+    </padding>
+    <children>
+        <Label fx:id="formTitleLabel" text="Student Registration" styleClass="section-title" />
+        <Separator />
+
+        <GridPane hgap="14" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            <children>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Registration Number *" styleClass="form-label" />
+                        <TextField fx:id="regNoField" promptText="e.g. CS2025001" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <children>
+                        <Label text="Academic Year *" styleClass="form-label" />
+                        <TextField fx:id="academicYearField" promptText="e.g. 2025-2026" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <children>
+                        <Label text="First Name *" styleClass="form-label" />
+                        <TextField fx:id="firstNameField" promptText="First Name" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Label text="Last Name *" styleClass="form-label" />
+                        <TextField fx:id="lastNameField" promptText="Last Name" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <children>
+                        <Label text="Email Address *" styleClass="form-label" />
+                        <TextField fx:id="emailField" promptText="student@attendx.edu" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Label text="Phone Number" styleClass="form-label" />
+                        <TextField fx:id="phoneField" promptText="Contact number" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <children>
+                        <Label text="Department *" styleClass="form-label" />
+                        <ComboBox fx:id="departmentCombo" promptText="Select Department" maxWidth="Infinity" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <children>
+                        <Label text="Course *" styleClass="form-label" />
+                        <ComboBox fx:id="courseCombo" promptText="Select Course" maxWidth="Infinity" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <children>
+                        <Label text="Semester *" styleClass="form-label" />
+                        <ComboBox fx:id="semesterCombo" promptText="Select Semester" maxWidth="Infinity" styleClass="form-field" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <children>
+                        <Label text="Section" styleClass="form-label" />
+                        <TextField fx:id="sectionField" text="A" styleClass="form-field" />
+                    </children>
+                </VBox>
+            </children>
+        </GridPane>
+
+        <Label fx:id="errorLabel" text="" style="-fx-text-fill: #EF4444; -fx-font-weight: 500;" visible="false" wrapText="true" />
+
+        <Separator />
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <children>
+                <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-btn" />
+                <Button fx:id="saveBtn" text="Save Student" onAction="#handleSave" styleClass="primary-btn" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

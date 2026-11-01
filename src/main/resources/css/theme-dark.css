@@ -1,0 +1,119 @@
+/* ==========================================================
+   AttendX - Dark Theme
+   ========================================================== */
+
+.root {
+    -fx-base: #18191A;
+    -fx-background: #18191A;
+}
+
+.page-bg {
+    -fx-background-color: #18191A;
+}
+
+.sidebar {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}
+
+.sidebar-btn {
+    -fx-text-fill: #B0B3B8;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: #3A3B3C;
+    -fx-text-fill: #E4E6EB;
+}
+
+.sidebar-btn.active {
+    -fx-background-color: #302E5C;
+    -fx-text-fill: #9D96FF;
+}
+
+.header-bar {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}
+
+.section-title {
+    -fx-text-fill: #E4E6EB;
+}
+
+.page-subtitle {
+    -fx-text-fill: #B0B3B8;
+}
+
+.stat-card {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}
+
+.stat-card-title {
+    -fx-text-fill: #B0B3B8;
+}
+
+.stat-card-value {
+    -fx-text-fill: #E4E6EB;
+}
+
+.card-panel {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}
+
+.form-field {
+    -fx-background-color: #3A3B3C;
+    -fx-border-color: #4E4F50;
+    -fx-text-fill: #E4E6EB;
+}
+
+.form-label {
+    -fx-text-fill: #B0B3B8;
+}
+
+.secondary-btn {
+    -fx-background-color: #3A3B3C;
+    -fx-text-fill: #E4E6EB;
+    -fx-border-color: #4E4F50;
+}
+
+.secondary-btn:hover {
+    -fx-background-color: #4E4F50;
+}
+
+.table-view {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #18191A;
+}
+
+.table-view .column-header {
+    -fx-text-fill: #B0B3B8;
+}
+
+.table-row-cell {
+    -fx-background-color: #242526;
+    -fx-text-fill: #E4E6EB;
+    -fx-border-color: transparent transparent #3A3B3C transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #1F2021;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #3A3B3C;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #302E5C;
+    -fx-text-fill: #FFFFFF;
+}
+
+.att-card {
+    -fx-background-color: #242526;
+    -fx-border-color: #3A3B3C;
+}

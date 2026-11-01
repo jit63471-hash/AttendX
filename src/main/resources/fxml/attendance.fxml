@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.attendx.controller.AttendanceController"
+      spacing="16" styleClass="page-bg">
+    <padding>
+        <Insets top="20" right="24" bottom="24" left="24" />
+    </padding>
+    <children>
+        <!-- SELECTION PANEL -->
+        <VBox styleClass="card-panel" spacing="14">
+            <children>
+                <Label text="Class Session &amp; Subject Selection" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+
+                <FlowPane hgap="12" vgap="12" alignment="CENTER_LEFT">
+                    <children>
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Department *" styleClass="form-label" />
+                                <ComboBox fx:id="deptCombo" promptText="Select Department" prefWidth="180" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Course *" styleClass="form-label" />
+                                <ComboBox fx:id="courseCombo" promptText="Select Course" prefWidth="180" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Semester *" styleClass="form-label" />
+                                <ComboBox fx:id="semesterCombo" promptText="Select Semester" prefWidth="130" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Subject *" styleClass="form-label" />
+                                <ComboBox fx:id="subjectCombo" promptText="Select Subject" prefWidth="220" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Session Date *" styleClass="form-label" />
+                                <DatePicker fx:id="sessionDatePicker" prefWidth="140" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <children>
+                                <Label text="Topic Covered" styleClass="form-label" />
+                                <TextField fx:id="topicField" promptText="e.g. Binary Search Trees" prefWidth="200" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="4" alignment="BOTTOM_LEFT">
+                            <children>
+                                <Button fx:id="loadStudentsBtn" text="Load Students" onAction="#handleLoadStudents" styleClass="primary-btn" style="-fx-padding: 8 20;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </FlowPane>
+            </children>
+        </VBox>
+
+        <!-- ATTENDANCE MARKING GRID / ACTIONS -->
+        <VBox styleClass="card-panel" VBox.vgrow="ALWAYS" spacing="12">
+            <children>
+                <!-- Bulk actions bar -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <children>
+                        <Label fx:id="sessionSummaryLabel" text="Please select a subject and load students" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <Button fx:id="markAllPresentBtn" text="✓ Mark All Present" onAction="#handleMarkAllPresent" styleClass="success-btn" disable="true" />
+                        <Button fx:id="markAllAbsentBtn" text="❌ Mark All Absent" onAction="#handleMarkAllAbsent" styleClass="danger-btn" disable="true" />
+                        <Separator orientation="VERTICAL" />
+                        <Button fx:id="submitBtn" text="💾 Submit Attendance" onAction="#handleSubmitAttendance" styleClass="primary-btn" disable="true" />
+                    </children>
+                </HBox>
+
+                <!-- Scrollable Cards Grid -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                    <content>
+                        <FlowPane fx:id="cardsContainer" hgap="14" vgap="14">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10" />
+                            </padding>
+                            <!-- Dynamically generated student attendance cards -->
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</VBox>

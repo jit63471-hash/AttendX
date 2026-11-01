@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.attendx.controller.LoginController"
+           styleClass="page-bg" prefWidth="1200" prefHeight="750">
+    <children>
+        <VBox fx:id="cardBox" alignment="CENTER" maxWidth="440" spacing="20" styleClass="card-panel">
+            <padding>
+                <Insets top="40" right="36" bottom="40" left="36" />
+            </padding>
+            <children>
+                <!-- Brand & Title -->
+                <VBox alignment="CENTER" spacing="6">
+                    <children>
+                        <Label text="AttendX" styleClass="sidebar-brand" style="-fx-font-size: 32px;" />
+                        <Label text="Smarter Attendance. Better Management." styleClass="page-subtitle" style="-fx-font-size: 13px;" />
+                    </children>
+                </VBox>
+
+                <Separator />
+
+                <!-- Login Form -->
+                <VBox spacing="14" alignment="CENTER_LEFT" fillWidth="true">
+                    <children>
+                        <VBox spacing="6">
+                            <children>
+                                <Label text="Username" styleClass="form-label" />
+                                <TextField fx:id="usernameField" promptText="Enter your username (e.g. admin)" styleClass="form-field" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <children>
+                                <Label text="Password" styleClass="form-label" />
+                                <StackPane alignment="CENTER_RIGHT">
+                                    <children>
+                                        <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="form-field" />
+                                        <TextField fx:id="passwordTextField" promptText="Enter your password" styleClass="form-field" visible="false" />
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </VBox>
+
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <CheckBox fx:id="showPasswordCheck" text="Show Password" onAction="#handleToggleShowPassword" />
+                            </children>
+                        </HBox>
+
+                        <Label fx:id="errorLabel" text="" style="-fx-text-fill: #EF4444; -fx-font-weight: 500; -fx-font-size: 12px;" wrapText="true" visible="false" />
+
+                        <Button fx:id="loginBtn" text="Sign In" onAction="#handleLogin" styleClass="primary-btn" maxWidth="Infinity" style="-fx-padding: 10 16; -fx-font-size: 14px;" />
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </children>
+</StackPane>

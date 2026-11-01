@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.attendx.controller.FacultyController"
+      spacing="16" styleClass="page-bg">
+    <padding>
+        <Insets top="20" right="24" bottom="24" left="24" />
+    </padding>
+    <children>
+        <!-- TOOLBAR -->
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <children>
+                <TextField fx:id="searchField" promptText="🔍  Search by Name or Employee ID..." styleClass="form-field" prefWidth="300" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="+ Add Faculty Member" onAction="#handleOpenAddDialog" styleClass="primary-btn" />
+            </children>
+        </HBox>
+
+        <!-- FACULTY TABLE -->
+        <VBox styleClass="card-panel" VBox.vgrow="ALWAYS" spacing="10">
+            <children>
+                <Label fx:id="facultyCountLabel" text="Faculty Directory" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+
+                <TableView fx:id="facultyTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colEmpId" text="Employee ID" prefWidth="120" />
+                        <TableColumn fx:id="colName" text="Full Name" prefWidth="180" />
+                        <TableColumn fx:id="colEmail" text="Email Address" prefWidth="200" />
+                        <TableColumn fx:id="colPhone" text="Phone" prefWidth="120" />
+                        <TableColumn fx:id="colDept" text="Department" prefWidth="150" />
+                        <TableColumn fx:id="colDesignation" text="Designation" prefWidth="150" />
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="90" />
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="140" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</VBox>
